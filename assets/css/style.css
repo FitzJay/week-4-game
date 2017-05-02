@@ -1,0 +1,16 @@
+
+.button {
+    font-size: 24;
+    width: 320px;
+    height: 350px;
+}
+
+.img{
+	height:300px;
+    width:300px;
+    align-content: center;
+}
+
+body {
+	background: #FFFFFF;
+}
