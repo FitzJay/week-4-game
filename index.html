@@ -9,9 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<script type="text/javascript" src="game.js"></script>
-<script type="text/javascript" src="jquery-3.2.1.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 
 <body>
@@ -21,25 +21,45 @@
 
 <div id="gameSection">
 	
-	<h2>Select Your Character</h1>
+	<div  id="characters">
+
+		<h2>Select Your Character</h2>
+
+	</div>
+	<div id="selectedcharacterSection">
 
 		<h3>Your Fighter</h3>
-		
-			<div id="chosenCharacter"></div>
-	
-		<h3>Fight Section</h3>
-	
-			<button class="btn" id="attack-button">Attack</button>
 
+		<div id="chosenCharacter"></div>
+
+	</div>
+	<div id="fightSection">
+
+		<h3>Fight Section</h3>
+
+			<button class="btn" id="attackButton">Attack</button>
+
+			<div id="gameMessage"></div>
+
+	</div>
+	<div id="action">
+
+		<div id="charactersSection">
+			
 		<h3>Defender</h3>
 
-			<div id="defender"></div>
+				<div id="defender"></div>
 
-		<h3>Available to Attack</h3>
+		</div>	
 
-			<div id="available-to-attack"></div>
+	</div>	
+	
+	<div id="availableToAttack"></div>
+
+		<h3>Available To Attack</h3>
 
 </div>
+
 
 
 </body>

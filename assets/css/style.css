@@ -14,3 +14,9 @@
 body {
 	background: #FFFFFF;
 }
+.character img {
+  border: 0 none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
