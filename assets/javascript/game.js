@@ -40,46 +40,26 @@ $(document).ready(function() {
 	var currentDefender; 			//var for selected Enemy
 	var fighters =[];				//var for remaining Enemies
 	var attackResult;				//var for remaining HP of both Fighter and Enemy
-	var turnCounter = 1;			//
-	var killCount = 0;
+	var turnCounter = 1;			//var for each click 
+	var killCount = 0;				//var for kill count
 
 	
-/*	let charBlock = function(character, displayArea, createChar)  {
-
-		var charDiv = $("<div class="character" data-name='" + character.name + "'>");
-		var charName = $("<div class="character-name">").text(character.name);
-		var charImage = $("<img alt="image" class="character-image">").attr("src", charcter.imageURL);
-		var charHealth = $("<div class="character-health">".text(character.health);
-
-		charDiv.append(charName).append(charImage).append(charHealth);
-
-		$(displayArea).append(charDiv);
-
-		if (createChar == "enemy") {
-		 $(charDiv).addClass("enemy")	
-		} else if (createChar == "defender") {
-		currentDefender = character;
-		$(charDiv).addClass("targetEnemy")
-		}
-	};*/
 
 
 var charBlock = function(character, displayArea, makeChar) {
-    //character: obj, renderArea: class/id, makeChar: string
+
     var charDiv = $("<div class='character' data-name='" + character.name + "'>");
     var charName = $("<div class='character-name'>").text(character.name);
     var charImage = $("<img alt='image' class='character-image'>").attr("src", character.imageUrl);
     var charHealth = $("<div class='character-health'>").text(character.health);
     charDiv.append(charName).append(charImage).append(charHealth);
     $(displayArea).append(charDiv);
-    //Capitalizes the first letter in characters name
-    // $('.character').css('textTransform', 'capitalize');
-    // conditional render
+   
     if (makeChar == 'enemy') {
       $(charDiv).addClass('enemy');
     } else if (makeChar == 'defender') {
       currentDefender = character;
-      $(charDiv).addClass('targetEnemy');
+      $(charDiv).addClass('target-enemy');
     }
   };
 
@@ -99,17 +79,20 @@ var charBlock = function(character, displayArea, makeChar) {
 			$(areaDisplay).empty();
 			for (var key in charObj) {
         		if (charObj.hasOwnProperty(key)) {
-          			charBlock(charObj[key], areaDisplay, '');
+          			charBlock(charObj[key], areaDisplay, "");
         		}		
       		}
 		}
 	
 		if (areaDisplay == "#chosenCharacter") {
+			$('#selected-character').prepend("Your Character"); 
 		 	charBlock(charObj, areaDisplay, "");
+		 	$('#attackButton').css('visibility', 'visible');
 
 		}
 
 		if (areaDisplay == "#availableToAttack") {
+			$("availableToAttack").prepend("Choose Your Next Opponent"); 
 			for (var i = 0; i < charObj.length; i++) {
 				charBlock(charObj[i], areaDisplay, "enemy");
 			}
@@ -131,6 +114,7 @@ var charBlock = function(character, displayArea, makeChar) {
 			for (var i= 0; i < fighters.length; i++) {
 
 				if (fighters[i].name == charObj) {
+					$('#defender').append("Your selected opponent")
 					charBlock(fighters[i], areaDisplay, defender);
 				}
 			}
@@ -138,6 +122,7 @@ var charBlock = function(character, displayArea, makeChar) {
 
 		if (areaDisplay == "playerDamage") {
 			$("#defender").empty();
+			$('#defender').append("Your selected opponent")
 			charBlock(charObj, "#defender", "defender");
 		}
 
@@ -213,9 +198,9 @@ var charBlock = function(character, displayArea, makeChar) {
       	displayMessage("No enemy here.");
     	}
  	});
-	//Restarts the game - renders a reset button
+	
   	var restartGame = function(inputEndGame) {
-    //When 'Restart' button is clicked, reload the page.
+   
     var restart = $('<button class="btn">Restart</button>').click(function() {
       location.reload();
     });
